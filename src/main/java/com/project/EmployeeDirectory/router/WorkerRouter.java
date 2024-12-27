@@ -23,14 +23,6 @@ public class WorkerRouter {
         return "this is a test worker";
     }
 
-////    create a new worker
-//    @PostMapping(value = "/", consumes = "APPLICATION_JSON_VALUE")
-//    public String createRoute(HttpEntity<String> req) {
-//        String json = req.getBody();
-//
-//        Worker worker = new Worker();
-//        return "maybe";
-//    }
 
     @GetMapping(value = "/")
     public List<Worker> getAllRouter() {
