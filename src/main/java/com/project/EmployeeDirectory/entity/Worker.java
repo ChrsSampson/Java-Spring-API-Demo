@@ -2,6 +2,9 @@ package com.project.EmployeeDirectory.entity;
 
 import com.project.EmployeeDirectory.dao.WorkerDAO;
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
+import java.util.UUID;
 
 @Entity
 @Table(name="workers")

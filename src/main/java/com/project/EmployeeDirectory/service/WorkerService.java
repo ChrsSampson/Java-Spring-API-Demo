@@ -7,9 +7,11 @@ import java.util.List;
 public interface WorkerService {
     List<Worker> findAll();
 
-    void save(Worker worker);
+    Worker save(Worker worker);
 
     Worker findById(int id);
 
     void deleteById(int id);
+
+    Worker update(Worker worker);
 }

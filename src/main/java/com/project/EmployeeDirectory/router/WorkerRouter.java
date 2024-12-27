@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/workers")
+@RequestMapping("/api")
 //Important this needs to be a capital class name
 public class WorkerRouter {
 
@@ -23,21 +23,34 @@ public class WorkerRouter {
         return "this is a test worker";
     }
 
-
-    @GetMapping(value = "/")
+    @GetMapping(value = "/workers")
     public List<Worker> getAllRouter() {
         return workerService.findAll();
     }
 
-    @GetMapping(value="/{idParam}")
+    @GetMapping(value="/workers/{idParam}")
     public Worker getOne(@PathVariable(value="idParam") int id) {
         return workerService.findById(id);
     }
 
-    @DeleteMapping(value="/{idParam}")
+    @DeleteMapping(value="/workers/{idParam}")
     public String deleteOne(@PathVariable(value="idParam") int id) {
         workerService.deleteById(id);
         return "Deleted: " + id;
+    }
+
+    @PostMapping("/workers")
+    public Worker createRoute(@RequestBody Worker workerData) {
+//      init the id to 0 - this forces the save of a new item rather than an update
+        workerData.setId(0);
+
+//      make or update operation
+        return workerService.save(workerData);
+    }
+
+    @PutMapping("/workers")
+    public Worker updateRoute(@RequestBody Worker workerData){
+        return workerService.save(workerData);
     }
 
 }

@@ -3,7 +3,6 @@ package com.project.EmployeeDirectory.dao;
 import com.project.EmployeeDirectory.entity.Worker;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -29,9 +28,9 @@ public class WorkerImpl implements WorkerDAO {
     }
 
     @Override
-    public void save(Worker worker) {
+    public Worker save(Worker worker) {
 //        update or save based on primary key
-        Worker record = entityManager.merge(worker);
+        return entityManager.merge(worker);
     }
 
     @Override
@@ -47,5 +46,14 @@ public class WorkerImpl implements WorkerDAO {
 
 //        remove record
         entityManager.remove(record);
+    }
+
+    @Override
+    public Worker update(Worker worker) {
+        Worker record = entityManager.find(Worker.class, worker.getId());
+
+        entityManager.merge(record);
+
+        return record;
     }
 }

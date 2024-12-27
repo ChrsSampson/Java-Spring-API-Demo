@@ -27,9 +27,9 @@ public class WorkerServiceImpl implements WorkerService {
 
     @Override
     @Transactional
-    public void save(Worker worker){
-        workerDAO.save(worker);
-    }
+    public Worker save(Worker worker){
+      return workerDAO.save(worker);
+    };
 
     @Override
     public Worker findById(int id) {
@@ -42,5 +42,10 @@ public class WorkerServiceImpl implements WorkerService {
         workerDAO.deleteById(id);
     }
 
+    @Override
+    @Transactional
+    public Worker update(Worker worker){
+        return workerDAO.update(worker);
+    }
 
 }
