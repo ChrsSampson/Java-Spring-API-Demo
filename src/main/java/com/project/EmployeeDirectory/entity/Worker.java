@@ -1,14 +1,12 @@
 package com.project.EmployeeDirectory.entity;
 
-import com.project.EmployeeDirectory.dao.WorkerDAO;
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
-
-import java.util.UUID;
 
 @Entity
 @Table(name="workers")
 public class Worker {
+
+//    this id generation method does not fucking work with postgres unless the database is empty
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
